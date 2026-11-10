@@ -1,0 +1,210 @@
+{
+  "_about": "MD Dia-Inch rules. Edit, save, then press 'Reload rules' in the panel. Author: MD (Mayank Dholariya)",
+  "schemaVersion": 1,
+  "smallBoreMaxNbMm": 40,
+  "countScrewedJoints": false,
+  "flangeJointsInInchDia": false,
+  "randomPipeLengthM": 0,
+  "bareBoreUnit": "mm",
+  "lineRegex": "",
+  "areaMode": "zone",
+  "fieldWhenShopFalse": true,
+  "checkWhenConnAssumed": true,
+  "nbFromGeometry": true,
+  "propertyAliases": {
+    "type": ["TYPE", "Type", "Element Type", "AVEVA Type", "PDMS Type", "E3D Type"],
+    "name": ["NAME", "Name", "Element Name", "Full Name"],
+    "p1Conn": ["ACON", "Arrive Connection", "Arrive Conn", "Arrive Connection Type", "P1CONN", "P1 CONN", "P1 Connection", "P1 Connection Type", "PPCON1"],
+    "p2Conn": ["LCON", "Leave Connection", "Leave Conn", "Leave Connection Type", "P2CONN", "P2 CONN", "P2 Connection", "P2 Connection Type", "PPCON2"],
+    "p3Conn": ["P3CONN", "P3 CONN", "P3 Connection", "P3 Connection Type", "PPCON3", "Branch Connection"],
+    "p4Conn": ["P4CONN", "P4 CONN", "P4 Connection", "P4 Connection Type", "PPCON4"],
+    "p1Bore": ["ABOR", "Arrive Bore", "P1BORE", "P1 BORE", "P1 Bore", "PPBO1"],
+    "p2Bore": ["LBOR", "Leave Bore", "P2BORE", "P2 BORE", "P2 Bore", "PPBO2"],
+    "p3Bore": ["P3BORE", "P3 BORE", "P3 Bore", "PPBO3", "Branch Bore"],
+    "p4Bore": ["P4BORE", "P4 BORE", "P4 Bore", "PPBO4"],
+    "bore": ["BORE", "NB", "Nominal Bore", "Nominal Size", "Size", "DN"],
+    "headBore": ["HBOR", "Head Bore"],
+    "tailBore": ["TBOR", "Tail Bore"],
+    "headConn": ["HCON", "HCONN", "Head Connection", "Head Connection Type"],
+    "tailConn": ["TCON", "TCONN", "Tail Connection", "Tail Connection Type"],
+    "headRef": ["HREF", "Head Reference", "Head Ref"],
+    "tailRef": ["TREF", "Tail Reference", "Tail Ref"],
+    "spec": ["PSPE", "PSPEC", "Pipe Spec", "Piping Spec", "Specification", "Spec"],
+    "compSpec": ["SPRE", "Spec Reference", "Spref"],
+    "tubeLength": ["LTLE", "Tube Length", "TUBE LENGTH", "ITLE", "Length"],
+    "shop": ["SHOP", "Shop", "Shop Flag"],
+    "fieldWeld": ["FIELD WELD", "FIELDWELD", "FWELD", "Field Weld", ":FIELDWELD"],
+    "lineNo": ["Line No", "LINE NO", "Line Number", "LINENUMBER", ":LINENO", ":LINE_NO", ":LINENUMBER"],
+    "area": [":AREA", "Area"]
+  },
+  "connectionCodes": {
+    "BW": ["BW", "BWD", "BWE", "BV", "BUTT"],
+    "SW": ["SW", "SWF", "SWM", "SWD", "SKT", "SOCK"],
+    "SCR": ["SC", "SCR", "SCF", "SCM", "NPT", "TH", "THD", "BSP"],
+    "FL": ["F", "FL", "FBD", "FGD", "FF", "RF", "RTJ", "FLG", "LAP"],
+    "NONE": ["OPEN", "OPE", "CL", "CLOS", "CLOSED", "NUL", "NULL", "NONE", "NOC", "DRAN", "VENT", "PLN", "-", "UNSET"]
+  },
+  "typeWords": {
+    "TUBE": ["TUBE", "TUBI", "TUBING"],
+    "ELBO": ["ELBO", "ELBOW"],
+    "BEND": ["BEND"],
+    "TEE": ["TEE"],
+    "CROS": ["CROS", "CROSS"],
+    "OLET": ["OLET", "WELDOLET", "SOCKOLET", "THREDOLET", "NIPOLET"],
+    "REDU": ["REDU", "REDUCER"],
+    "FLAN": ["FLAN", "FLANGE"],
+    "LJSE": ["LJSE"],
+    "FBLI": ["FBLI", "BLIND"],
+    "VALV": ["VALV", "VALVE"],
+    "VTWA": ["VTWA"],
+    "VFWA": ["VFWA"],
+    "INST": ["INST", "INSTRUMENT"],
+    "PCOM": ["PCOM", "PCOMPONENT"],
+    "FILT": ["FILT", "FILTER"],
+    "TRAP": ["TRAP"],
+    "CAP": ["CAP"],
+    "CLOS": ["CLOS", "CLOSURE"],
+    "COUP": ["COUP", "COUPLING"],
+    "UNIO": ["UNIO", "UNION"],
+    "WELD": ["WELD"],
+    "GASK": ["GASK", "GASKET"],
+    "BOLT": ["BOLT"],
+    "ATTA": ["ATTA", "ATTACHMENT"],
+    "SHU": ["SHU"]
+  },
+  "typeRules": {
+    "ELBO": {
+      "ends": ["WELD", "WELD"]
+    },
+    "BEND": {
+      "ends": ["WELD", "WELD"]
+    },
+    "TEE": {
+      "ends": ["WELD", "WELD"],
+      "outlets": ["WELD"]
+    },
+    "CROS": {
+      "ends": ["WELD", "WELD"],
+      "outlets": ["WELD", "WELD"]
+    },
+    "OLET": {
+      "ends": ["=NONE", "=NONE"],
+      "outlets": ["WELD"],
+      "extraJoints": 1
+    },
+    "REDU": {
+      "ends": ["WELD", "WELD"]
+    },
+    "FLAN": {
+      "ends": ["WELD", "FL"]
+    },
+    "LJSE": {
+      "ends": ["WELD", "FL"]
+    },
+    "FBLI": {
+      "ends": ["FL", "NONE"]
+    },
+    "VALV": {
+      "ends": ["AUTO_FL", "AUTO_FL"]
+    },
+    "VTWA": {
+      "ends": ["AUTO_FL", "AUTO_FL"],
+      "outlets": ["AUTO_FL"]
+    },
+    "VFWA": {
+      "ends": ["AUTO_FL", "AUTO_FL"],
+      "outlets": ["AUTO_FL", "AUTO_FL"]
+    },
+    "INST": {
+      "ends": ["AUTO_FL", "AUTO_FL"]
+    },
+    "PCOM": {
+      "ends": ["AUTO_FL", "AUTO_FL"]
+    },
+    "FILT": {
+      "ends": ["AUTO_FL", "AUTO_FL"]
+    },
+    "TRAP": {
+      "ends": ["AUTO_FL", "AUTO_FL"]
+    },
+    "CAP": {
+      "ends": ["WELD", "NONE"]
+    },
+    "CLOS": {
+      "ends": ["WELD", "NONE"]
+    },
+    "COUP": {
+      "ends": ["WELD", "WELD"]
+    },
+    "UNIO": {
+      "ends": ["WELD", "WELD"]
+    },
+    "WELD": {
+      "joint": true,
+      "ends": ["WELD", "WELD"]
+    },
+    "GASK": {
+      "ignore": true
+    },
+    "BOLT": {
+      "ignore": true
+    },
+    "ATTA": {
+      "ignore": true
+    },
+    "SHU": {
+      "ignore": true
+    }
+  },
+  "branchOutletTypes": ["TEE", "CROS", "OLET", "VTWA", "VFWA"],
+  "structureTypes": {
+    "PIPE": ["PIPE"],
+    "BRAN": ["BRAN", "BRANCH"],
+    "ZONE": ["ZONE"],
+    "SITE": ["SITE"]
+  },
+  "nbTableMmToInch": {
+    "6": 0.125,
+    "8": 0.25,
+    "10": 0.375,
+    "15": 0.5,
+    "20": 0.75,
+    "25": 1,
+    "32": 1.25,
+    "40": 1.5,
+    "50": 2,
+    "65": 2.5,
+    "80": 3,
+    "90": 3.5,
+    "100": 4,
+    "125": 5,
+    "150": 6,
+    "200": 8,
+    "250": 10,
+    "300": 12,
+    "350": 14,
+    "400": 16,
+    "450": 18,
+    "500": 20,
+    "550": 22,
+    "600": 24,
+    "650": 26,
+    "700": 28,
+    "750": 30,
+    "800": 32,
+    "850": 34,
+    "900": 36,
+    "950": 38,
+    "1000": 40,
+    "1050": 42,
+    "1100": 44,
+    "1150": 46,
+    "1200": 48,
+    "1300": 52,
+    "1400": 56,
+    "1500": 60,
+    "1600": 64,
+    "1800": 72,
+    "2000": 80
+  }
+}
